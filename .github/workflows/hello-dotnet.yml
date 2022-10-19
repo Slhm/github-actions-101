@@ -20,7 +20,7 @@ jobs:
       - name: "Dotnet Restore"
         run: "dotnet restore $TEST_PATH"
       - name: "Dotnet build"
-        run: "dotnet build"
+        run: "dotnet build $TEST_PATH"
       - name: "Dotnet test"
         run: "dotnet test --no-build --configuration Release $TEST_PATH"
       # - name: "Dotnet run"
