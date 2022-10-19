@@ -34,4 +34,4 @@ jobs:
         with:
           name: Dotnet Tests            # Name of the check run which will be created
           path: TEST_PATH/*.trx    # Path to test results
-          # reporter: jest-junit
+          reporter: dotnet-trx
