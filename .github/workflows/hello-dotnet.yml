@@ -20,8 +20,10 @@ jobs:
       - name: "Dotnet Restore"
         run: "dotnet restore"
       - name: "Dotnet build"
-        run: "dotnet build"
+        run: "dotnet build $TEST_PATH"
       - name: "Dotnet test"
-        run: "dotnet test $TEST_PATH"
+        run: "dotnet test --no-build --configuration Release $TEST_PATH"
+      # - name: "Dotnet run"
+      #   run: "dotnet run"
       - name: "Print .NET CLI version"
         run: dotnet --version
