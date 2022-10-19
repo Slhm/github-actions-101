@@ -18,9 +18,9 @@ jobs:
         with:
           dotnet-version: "6.0.x"
       - name: "Dotnet Restore"
-        run: "dotnet restore"
+        run: "dotnet restore $TEST_PATH"
       - name: "Dotnet build"
-        run: "dotnet build $TEST_PATH"
+        run: "dotnet build"
       - name: "Dotnet test"
         run: "dotnet test --no-build --configuration Release $TEST_PATH"
       # - name: "Dotnet run"
