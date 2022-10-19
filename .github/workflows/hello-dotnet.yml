@@ -27,4 +27,4 @@ jobs:
       #   run: "dotnet run"
       - name: "Print .NET CLI version"
         run: dotnet --version
-      -uses: dorny/test-reporter
+      - uses: dorny/test-reporter
