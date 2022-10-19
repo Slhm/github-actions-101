@@ -5,7 +5,7 @@ on:
 
 env:
   TEST_PROJ_PATH: Notes.Api.Test/Notes.Api.Test.csproj
-  TEST_PATH: Notes.Api.Test/Notes.Api.Test
+  TEST_PATH: Notes.Api.Test
 
 jobs:
   build-test:
