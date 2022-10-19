@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 
 env:
-  TEST_PATH: Notes.Api.Test/Notes.Api.Test.csproj
+  TEST_PROJ_PATH: Notes.Api.Test/Notes.Api.Test.csproj
+  TEST_PATH: Notes.Api.Test/Notes.Api.Test
 
 jobs:
   build-test:
@@ -18,13 +19,19 @@ jobs:
         with:
           dotnet-version: "6.0.x"
       - name: "Dotnet Restore"
-        run: "dotnet restore $TEST_PATH"
+        run: "dotnet restore $TEST_PROJ_PATH"
       - name: "Dotnet build"
-        run: "dotnet build $TEST_PATH"
+        run: "dotnet build $TEST_PROJ_PATH"
       - name: "Dotnet test"
-        run: "dotnet test --configuration Release $TEST_PATH --logger trx"
+        run: "dotnet test --configuration Release $TEST_PROJ_PATH --logger trx"
       # - name: "Dotnet run"
       #   run: "dotnet run"
       - name: "Print .NET CLI version"
         run: dotnet --version
-      - uses: dorny/test-reporter
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()    # run this step even if previous step failed
+        with:
+          name: Dotnet Tests            # Name of the check run which will be created
+          path: TEST_PATH/*.trx    # Path to test results
+          # reporter: jest-junit
